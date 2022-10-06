@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/ef5cad2b65.js" crossorigin="anonymous"></script>
+
+    <title>Leikkitreffit</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+    </style>
+    <script>
+        /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
+        function myFunction() {
+            var x = document.getElementById("myLinks");
+            if (x.style.display === "block") {
+            x.style.display = "none";
+            } else {
+            x.style.display = "block";
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="topnav"> <!-- Top Navigation Menu -->
+            <a href="#home" class="active"><h1>LeikkiTreffit</h1></a>
+            <div id="myLinks"> <!-- Navigation links (hidden by default) -->
+                <a href="#news">Mikä on LeikkiTreffit?</a>
+                <a href="#contact">Tapahtumakalenteri</a>
+                <a href="#about">Kirjaudu sisään</a>
+                <a href="#about">Liity yhteisöön</a>
+                <a href="#about">Palautelomake</a>
+            </div>
+            <a href="javascript:void(0);" class="firstIcon" onclick="myFunction()"> <!-- Linkki sisäänkirjautumiseen -->
+                <i class="fa-regular fa-arrow-right-to-bracket"></i>
+            </a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()"> <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    </header>
+    <main>
+        <div id="div1">
+            <h2>Mikä on LeikkiTreffit?</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh justo, dapibus non dignissim in, eleifend et sem.</p><br>
+            <a href="#">Lue lisää</a>
+        </div>
+        <div id="div2">
+            <h2>Tapahtumakalenteri</h2>
+        </div>
+        <div id="div3">
+            <h2>Palautelomake</h2>
+        </div>
+    </main>
+    <footer>
+        <p class="copyright">Copyright 2022, LeikkiTreffit - <a href="#">Tietosuojaseloste</a></p>
+        <ul id="socialmedia">
+            <li><a href="#" target="_blank" class="social"><img src="https://img.icons8.com/color/40/000000/twitter-circled--v1.png" alt="twitter"></a></li>
+            <li><a href="#" target="_blank" class="social"><img src="https://img.icons8.com/fluency/40/000000/instagram-new.png" alt="instagram"></a></li>
+            <li><a href="#" target="_blank" class="social"><img src="https://img.icons8.com/color/40/000000/facebook-new.png" alt="facebook"></a></li>
+        </ul>
+    </footer>
+</body>
+</html>
