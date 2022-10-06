@@ -49,7 +49,7 @@ p {
 /* Style navigation menu links */
 .topnav a {
     color: #000000;
-    padding: 20px 22px;
+    padding: 24px 26px;
     text-decoration: none;
     font-size: 17px;
     display: block;
@@ -67,7 +67,7 @@ p {
 .topnav a.firstIcon {
     display: block;
     position: absolute;
-    right: 58px;
+    right: 65px;
     top: 0;
 }
   
