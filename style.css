@@ -131,9 +131,8 @@ p {
     background-color: #a69b97;
     display: flex;
     justify-content: space-between;
-    gap: 50px;
     align-items: center;
-    padding: 1rem;
+    padding: 1.5rem 2rem;
     text-align: center;
     text-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.4);
 }
@@ -214,6 +213,12 @@ p {
     margin-bottom: var(--margin-bottom);
 }
 
+#div3 form div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 footer {
     display: flex;
     height: 80px;
@@ -246,4 +251,119 @@ footer {
 .copyright {
     margin-left: 20px;
     font-size: 12px;
+}
+
+/* rekisterointi.html tyylit */
+.register {
+    width: 400px;
+    background-color: #ffffff;
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+    margin: auto;
+}
+.register h2 {
+    text-align: center;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #dee0e4;
+}
+.register form {
+    padding-top: 20px;
+}
+
+.register form div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 44px;
+}
+
+.register form input[type="password"],
+.register form input[type="text"],
+.register form input[type="email"],
+#div3 form input[type="text"],
+#div3 form input[type="email"],
+#div3 form textarea {
+    width: 310px;
+    height: 50px;
+    border: 1px solid #dee0e4;
+    margin-bottom: 30px;
+    padding: 0 10px;
+}
+.register form input[type="submit"],
+#div3 form input[type="submit"] {
+    width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #d7ccc8;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    color: rgb(71, 71, 71);
+    transition: background-color 0.2s;
+}
+.register form input[type="submit"]:hover,
+#div3 form input[type="submit"]:hover {
+    background-color: #a69b97;
+    transition: background-color 0.2s;
+    color: white;
+}
+
+/* login.php tyylit */
+.login {
+    width: 400px;
+    background-color: #ffffff;
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+    margin: auto;
+}
+.login h2 {
+    text-align: center;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #dee0e4;
+}
+.login form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 20px;
+}
+.login form label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #d7ccc8;
+    color: #ffffff;
+}
+.login form input[type="password"], .login form input[type="text"] {
+    width: 310px;
+    height: 50px;
+    border: 1px solid #dee0e4;
+    margin-bottom: 20px;
+    padding: 0 15px;
+}
+.login form input[type="submit"] {
+    width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #d7ccc8;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    color: rgb(71, 71, 71);
+    transition: background-color 0.2s;
+}
+.login form input[type="submit"]:hover {
+    background-color: #a69b97;
+    transition: background-color 0.2s;
+    color: white;
+}
+
+.linkki {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+#linkki {
+    text-decoration: none;
 }

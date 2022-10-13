@@ -7,48 +7,75 @@ function myFunction() {
     x.style.display = "block";
     }
 }
-/*
-Asetetaan kalenteriin näkymään nykyinen kuukausi:
-date-muuttujaksi valitaan selaimen paikallinen aika ja months-muuttuja sisältää taulukkona
-kaikki 12 kuukautta, alkaen indeksinumerosta 0. getMonth.metodilla haetaan date-muuttujasta
-nykyisen kuukauden indeksinumero ja querySelectorilla valitaan dokumentista h3-tason
-otsikko .date-divista ja muutetaan se haetun indeksinumeron perusteella sanallisesti oikeaksi
-kuukaudeksi, joka on määritelty months-muuttujan taulukossa täsmäävän indeksinumeron perusteella.
-*/
-const date = new Date();
 
-const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-];
+const renderCalendar = () => {
+    const date = new Date();
 
-document.querySelector(".date h3").innerHTML = months[date.getMonth()];
+    date.setDate(1);
 
-/* Asetetaan kuukauden alapuolelle kalenteriin näkymään nykyinen pvm:
-*/
-document.querySelector(".date p").innerHTML = date.toDateString();
+    const monthDays = document.querySelector('.days');
 
-/* Edellisen kuukauden päivät */
-const firstDayIndex = date.getDay();
-const prevLastDay = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
-console.log(prevLastDay);
+    const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 
-/* Kuukauden päivät */
-const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-let days = "";
+    const prevLastDay = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
 
-for(let i = 1; i <= lastDay; i++) {
-    days += `<div>${i}</div>`;
+    const firstDayIndex = date.getDay();
+
+    const lastDayIndex = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
+
+    const nextDays = 7 - lastDayIndex;
+
+    const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+    ];
+
+    document.querySelector('.date h3').innerHTML = months[date.getMonth()];
+
+    document.querySelector('.date p').innerHTML = new Date().toDateString();
+
+    let days = "";
+
+    for(let x = firstDayIndex; x > 1; x--) {
+        days += `<div class="prev-date">${prevLastDay - x + 2}</div>`;
+    }
+
+    for(let i = 1; i <= lastDay; i++) {
+        if (i === new Date().getDate() && date.getMonth() === new Date().getMonth()) {
+            days += `<div class="today">${i}</div>`;
+        } else {
+            days += `<div>${i}</div>`;
+        }
+    }
+
+    for(let j = 1; j <= nextDays; j++) {
+        days += `<div class="next-date">${j}</div>`
+    }
+    monthDays.innerHTML = days;
+};
+
+document.getElementById("prev").addEventListener("click", prevMonth);
+
+function prevMonth() {
+    date.setMonth(date.getMonth() - 1);
+    renderCalendar();
 }
 
-document.querySelector(".days").innerHTML = days;
+document.getElementById("next").addEventListener("click", nextMonth);
+
+function nextMonth() {
+    date.setMonth(date.getMonth() + 1);
+    renderCalendar();
+}
+
+renderCalendar();
