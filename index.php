@@ -4,15 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/ef5cad2b65.js" crossorigin="anonymous"></script>
     <title>Leikkitreffit</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <link rel="stylesheet" href="style.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
     </style>
+    <script>
+    let date = new Date();
+    function prevMonth() {
+    date.setMonth(date.getMonth() - 1);
+    renderCalendar();
+    }
+    function nextMonth() {
+    date.setMonth(date.getMonth() + 1);
+    renderCalendar();
+    }
+    </script>
 </head>
-<body>
+<body id="indexBody">
+<?php
+include('palautelomake.php');
+if(isset($_GET['status']) && $_GET['status'] == 'success') {
+    echo '<p id="successmsg">Kiitos palautteestasi!</p>';
+    }
+?>
     <header>
         <div class="topnav"> <!-- Top Navigation Menu -->
             <a href="index.php" class="active"><h1>LeikkiTreffit</h1></a>
@@ -23,10 +40,10 @@
                 <a href="rekisterointi.html">Liity yhteisöön</a>
                 <a href="index.php#palautelomake" id="lastItem">Palautelomake</a>
             </div>
-            <a href="login.php" class="firstIcon"> <!-- Linkki sisäänkirjautumiseen -->
-                <i class="fa-regular fa-arrow-right-to-bracket"></i>
+            <a href="login.php" class="loginIcon"> <!-- Linkki sisäänkirjautumiseen -->
+                <i class="fas fa-sign-in-alt"></i>
             </a>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()"> <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+            <a href="javascript:void(0);" class="hamburgerIcon" onclick="myFunction()" onmouseover="myFunction()"> <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
                 <i class="fa fa-bars"></i>
             </a>
         </div>
@@ -61,7 +78,7 @@
             </div>
         </div>
         <div id="div3">
-            <h2 id="palautelomake">Palautelomake</h2>
+            <h2 id="palautelomake">Palautelomake</h2><br>
             <form action="index.php" method="post">
                 <div>
                 <label for="fname">* Etunimi:</label>
@@ -81,40 +98,8 @@
                 </div>        
                 <input type="submit" name="submitbutton" value="Lähetä">
             </form><br>
-        <?php
-        $palvelin = "localhost";
-        $kayttaja = "root";
-        $salasana = "";
-        $tietokanta = "leikkitreffit";
-    
-        // luo yhteys
-        $yhteys = new mysqli($palvelin, $kayttaja, $salasana, $tietokanta);
-        // jos yhteyden muodostaminen ei onnistunut, keskeytä
-        if ($yhteys->connect_error) {
-            die("Yhteyden muodostaminen epäonnistui: " . $yhteys->connect_error);
-        }
-        // aseta merkistökoodaus (muuten ääkköset sekoavat)
-        $yhteys->set_charset("utf8");
-    
-        if(isset($_POST['submitbutton']) && $_POST['etunimi'] != null && $_POST['sukunimi'] != null && $_POST['sposti'] != null && $_POST['viesti'] != null) {
-            submitbuttonLomake();
-        }
-    
-        function submitButtonLomake() {
-            global $yhteys;
-            // katso vielä tämä kohta
-            $yhteydenotto = "INSERT INTO palautteet (etunimi, sukunimi, sposti, viesti) VALUES ('".$_POST['etunimi']."', '".$_POST['sukunimi']."', '".$_POST['sposti']."', '".$_POST['viesti']."')";
-            $lisays = $yhteys->query($yhteydenotto);
-            if ($lisays === TRUE) {
-                echo "Kiitos palautteestasi!<br>";
-            } else {
-                echo "Virhe: " . $yhteydenotto . "<br>" . $yhteys->error;
-            }
-        }
-        ?>
-        <br>
-        <p>*Tähdellä merkityt kohdat ovat pakollisia.</p><br>
-        <p><a href="#" id="ylos">Takaisin ylös</a></p><br>
+            <p>*Tähdellä merkityt kohdat ovat pakollisia.</p><br>
+            <p><a href="#" id="ylos">Takaisin ylös</a></p><br>
         </div>
     </main>
     <footer>

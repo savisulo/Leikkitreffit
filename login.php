@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/ef5cad2b65.js" crossorigin="anonymous"></script>
     <title>Kirjaudu sisään</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <link rel="stylesheet" href="style.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
@@ -14,25 +14,28 @@
 </head>
 <body>
     <header>
-        <div class="topnav"> <!-- Top Navigation Menu -->
+        <div class="topnav">
             <a href="index.php" class="active"><h1>LeikkiTreffit</h1></a>
-            <div id="myLinks"> <!-- Navigation links (hidden by default) -->
+            <div id="myLinks">
                 <a href="index.php" id="firstItem">Etusivu</a>
                 <a href="index.php#about">Mikä on LeikkiTreffit?</a>
                 <a href="index.php#kalenteri">Tapahtumakalenteri</a>
                 <a href="rekisterointi.html">Liity yhteisöön</a>
                 <a href="index.php#palautelomake" id="lastItem">Palautelomake</a>
             </div>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()"> <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+            <a href="javascript:void(0);" class="hamburgerIcon" onclick="myFunction()" onmouseover="myFunction()">
                 <i class="fa fa-bars"></i>
             </a>
         </div>
     </header>
 		<div>
 		<?php
-		if( $_GET['status'] == 'success'):
+		if(isset($_GET['status']) && $_GET['status'] == 'success') {
     	echo '<p id="successmsg">Rekisteröinti onnistui, voit nyt kirjautua sisään!</p>';
-		endif;
+        }
+        if(isset($_GET['status']) && $_GET['status'] == 'logoutsuccess') {
+            echo '<p id="successmsg">Olet nyt kirjautunut ulos</p>';
+        }
 		?>
 		</div>
 		<div class="login">
