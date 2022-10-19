@@ -99,7 +99,7 @@ if(isset($_GET['status']) && $_GET['status'] == 'success') {
                 <input type="submit" name="submitbutton" value="Lähetä">
             </form><br>
             <p>*Tähdellä merkityt kohdat ovat pakollisia.</p><br>
-            <p><a href="#" id="ylos">Takaisin ylös</a></p><br>
+            <p id="ylos"><a href="#">Takaisin ylös</a></p><br>
         </div>
     </main>
     <footer>

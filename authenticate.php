@@ -40,7 +40,7 @@ if ($stmt = $con->prepare('SELECT id, salasana, etunimi FROM users WHERE kayttaj
                 header("location: $next_page");
                 exit;
                 }
-            header('Location: home.php');
+            header('Location: profile.php');
         } else {
             // Incorrect password
             echo ('Virheellinen käyttäjätunnus ja/tai salasana!'); // tätä ilmoitusta ei saada, kentät vain tyhjenee, eli suoritetaan login.php-sivulle siirtyminen

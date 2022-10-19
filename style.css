@@ -207,6 +207,10 @@ p {
     transition: background-color 0.2s;
 }
 
+.days div a {
+    text-decoration: none;
+}
+
 .days div:hover:not(.today) {
     background-color: #d7ccc8;
     border: 0.1rem solid #a69b97;
@@ -222,14 +226,14 @@ p {
 }
 /* Styling calendar ends*/
 
-#div3 {
+#div3, #tapahtumalomake {
     height: var(--height);
     background-color: white;
     padding: var(--padding);
     margin-bottom: var(--margin-bottom);
 }
 
-#div3 form div {
+#div3 > form > div, #tapahtumalomake > form > div {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -297,7 +301,11 @@ footer {
 .register form input[type="email"],
 #div3 form input[type="text"],
 #div3 form input[type="email"],
-#div3 form textarea {
+#div3 form textarea,
+#tapahtumalomake form input[type="text"],
+#tapahtumalomake form input[type="date"],
+#tapahtumalomake form input[type="time"],
+#tapahtumalomake form textarea {
     width: 310px;
     height: 50px;
     border: 1px solid #dee0e4;
@@ -305,7 +313,8 @@ footer {
     padding: 0 10px;
 }
 .register form input[type="submit"],
-#div3 form input[type="submit"] {
+#div3 form input[type="submit"],
+#tapahtumalomake form input[type="submit"] {
     width: 100%;
     padding: 20px;
     margin-top: 20px;
@@ -317,10 +326,15 @@ footer {
     transition: background-color 0.2s;
 }
 .register form input[type="submit"]:hover,
-#div3 form input[type="submit"]:hover {
+#div3 form input[type="submit"]:hover,
+#tapahtumalomake form input[type="submit"]:hover {
     background-color: #a69b97;
     transition: background-color 0.2s;
     color: white;
+}
+
+#readOnly label, #readOnly input[type="text"] {
+    color: rgb(183, 183, 183);
 }
 
 /* login.php tyylit */

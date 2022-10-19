@@ -53,9 +53,9 @@ const renderCalendar = () => {
 
     for(let i = 1; i <= lastDay; i++) {
         if (i === new Date().getDate() && dateRender.getMonth() === new Date().getMonth()) {
-            days += `<div class="today">${i}</div>`;
+            days += `<div class="today"><a href="javascript:void(0);" onclick="addEvent()">${i}</a></div>`;
         } else {
-            days += `<div>${i}</div>`;
+            days += `<div><a href="javascript:void(0);" onclick="addEvent()">${i}</a></div>`;
         }
     }
 
@@ -70,3 +70,8 @@ document.getElementById("prev").addEventListener("click", prevMonth);
 document.getElementById("next").addEventListener("click", nextMonth);
 
 renderCalendar();
+
+function addEvent() {
+    const element = getElementById("ylos");
+    element.style.color = "red";
+}
