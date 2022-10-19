@@ -207,10 +207,6 @@ p {
     transition: background-color 0.2s;
 }
 
-.days div a {
-    text-decoration: none;
-}
-
 .days div:hover:not(.today) {
     background-color: #d7ccc8;
     border: 0.1rem solid #a69b97;
