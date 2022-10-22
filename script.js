@@ -2,9 +2,31 @@
 function myFunction() {
     var x = document.getElementById("myLinks");
     if (x.style.display === "block") {
-    x.style.display = "none";
+        x.style.display = "none";
     } else {
+        x.style.display = "block";
+    }
+}
+
+function readMore() {
+    var x = document.getElementById("lueLisaa");
+    var y = document.getElementById("button1");
+    var z = document.getElementById("button2");
     x.style.display = "block";
+    if (x.style.display === "block") {
+        y.style.display = "none";
+        z.style.display = "block";
+    }
+}
+
+function readLess() {
+    var x = document.getElementById("lueLisaa");
+    var y = document.getElementById("button1");
+    var z = document.getElementById("button2");
+    x.style.display = "none";
+    if (x.style.display === "none") {
+        y.style.display = "block";
+        z.style.display = "none";
     }
 }
 
@@ -53,9 +75,9 @@ const renderCalendar = () => {
 
     for(let i = 1; i <= lastDay; i++) {
         if (i === new Date().getDate() && dateRender.getMonth() === new Date().getMonth()) {
-            days += `<div class="today"><a href="javascript:void(0)" onclick="myTest()">${i}</a></div>`;
+            days += `<div class="today" id="calendarEvent"><a href="tapahtuma.php" onclick="basicPopup(this.href,'myWindow','700','300','yes');return false">${i}</a></div>`;
         } else {
-            days += `<div><a href="javascript:void(0)" onclick="myTest()">${i}</a></div>`;
+            days += `<div><a href="tapahtuma.php" onclick="basicPopup(this.href,'myWindow','700','300','yes');return false">${i}</a></div>`;
         }
     }
 
@@ -69,8 +91,23 @@ document.getElementById("prev").addEventListener("click", prevMonth);
 
 document.getElementById("next").addEventListener("click", nextMonth);
 
-function myTest() {
-    alert("toimii!");
+let date = new Date();
+
+function prevMonth() {
+    date.setMonth(date.getMonth() - 1);
+    renderCalendar();
+}
+
+function nextMonth() {
+    date.setMonth(date.getMonth() + 1);
+    renderCalendar();
 }
 
 renderCalendar();
+
+function basicPopup(url,winName,w,h,scroll) {
+    LeftPosition = (screen.width) ? (screen.width-w)/2 : 0;
+    TopPosition = (screen.height) ? (screen.height-h)/2 : 0;
+    settings = 'height='+h+',width='+w+',top='+TopPosition+',left='+LeftPosition+',scrollbars='+scroll+',resizable'
+    popupWindow = window.open(url,winName,settings)
+}

@@ -41,14 +41,9 @@ include('secure.php');
 			<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Kirjaudu ulos</a>
 		</div>
 	</main>
-	<footer>
-        <p class="copyright">Copyright 2022, LeikkiTreffit - <a href="#">Tietosuojaseloste</a></p>
-        <ul id="socialmedia">
-            <li><a href="#" target="_blank" class="social"><img src="https://img.icons8.com/color/40/000000/twitter-circled--v1.png" alt="twitter"></a></li>
-            <li><a href="#" target="_blank" class="social"><img src="https://img.icons8.com/fluency/40/000000/instagram-new.png" alt="instagram"></a></li>
-            <li><a href="#" target="_blank" class="social"><img src="https://img.icons8.com/color/40/000000/facebook-new.png" alt="facebook"></a></li>
-        </ul>
-    </footer>
+	<?php
+    include('footer.html');
+    ?>
 	<script src="script.js"></script>
 </body>
 </html>

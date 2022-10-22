@@ -19,24 +19,22 @@ $stmt->fetch();
 $stmt->close();
 
 $etunimi = $_SESSION['etunimi'];
-$haku2sql = "SELECT kayttajatunnus, email FROM users WHERE etunimi = '$etunimi'";
+$haku2sql = "SELECT sukunimi, kayttajatunnus, email FROM users WHERE etunimi = '$etunimi'";
 $tulokset2 = $con->query($haku2sql);
-
 if ($tulokset2->num_rows > 0) {
    while($rivi = $tulokset2->fetch_assoc()) {
-      $ktunnus = $rivi["kayttajatunnus"];
-	  $sposti = $rivi["email"];
+    $sukunimi = $rivi["sukunimi"];
+    $ktunnus = $rivi["kayttajatunnus"];
+	$sposti = $rivi["email"];
    }
 }
 
 $hakusql = "SELECT * FROM tapahtumat WHERE kayttajatunnus = '$ktunnus'";
 $tulokset = $con->query($hakusql);
 if ($tulokset->num_rows > 0) {
-   while($rivi = $tulokset->fetch_assoc()) {
-      $tapahtuma = $rivi["nimi"]. " - " . $rivi["paikka"]. " - " . $rivi["pvm"]. " - " . $rivi["klo"]. " - " . $rivi["kuvaus"]. "<br>";
-   }
+    $tapahtumat = mysqli_fetch_all($tulokset, MYSQLI_ASSOC);
 } else {
-   $msg = "Et ole lisännyt tapahtumia.";
+   $msg = "<p>Et ole lisännyt tapahtumia.</p>";
 }
 ?>
 
@@ -72,27 +70,45 @@ if ($tulokset->num_rows > 0) {
         </div>
     </header>
 	<main>
-		<div>
-			<p>Tervetuloa takaisin, <?=$_SESSION['etunimi']?>! Tässä on käyttäjätilisi tiedot:</p>
-			<p>Käyttäjätunnus:</p>
-			<p><?=$ktunnus?></p>
-			<p>Email:</p>
-			<p><?=$sposti?></p>
-			<p>Lisäämäsi tapahtumat:</p>
-			<p><?=$msg?></p>
-			<p><?=$tapahtuma?></p>
-			<a href="tapahtuma.php">Lisää tapahtuma</a><br>
-			<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Kirjaudu ulos</a>
+		<div id="profileDiv">
+			<h2>Tervetuloa takaisin, <?=$_SESSION['etunimi']?>!</h2>
+            <p>Tässä on käyttäjätilisi tiedot:</p>
+            <div>
+			    <p class="profileInfo">Etunimi:</p>
+			    <p><?=$etunimi?></p>
+            </div>
+            <div>
+			    <p class="profileInfo">Sukunimi:</p>
+			    <p><?=$sukunimi?></p>
+            </div>
+            <div>
+			    <p class="profileInfo">Email:</p>
+			    <p><?=$sposti?></p>
+            </div>
+            <div>
+			    <p class="profileInfo">Käyttäjätunnus:</p>
+			    <p><?=$ktunnus?></p>
+            </div>
+            <div>
+			    <p class="profileInfo">Lisäämäsi tapahtumat:</p>
+			    <?=$msg?>
+                <ul>
+                <?php
+                foreach ($tapahtumat as $tapahtuma) {
+                ?>
+                <li><?php echo $tapahtuma['nimi']. " - " . $tapahtuma['paikka']. "<br>" . $tapahtuma['pvm']. " - " . $tapahtuma['klo']. "<br>" . $tapahtuma['kuvaus']. "<br>";?></li>
+                <?php
+                }
+                ?>
+                </ul>
+            </div>
+			<button id="button3"><a href="tapahtuma.php">+ Lisää uusi tapahtuma</a></button>
+			<button id="button3"><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Kirjaudu ulos</a></button>
 		</div>
 	</main>
-	<footer>
-        <p class="copyright">Copyright 2022, LeikkiTreffit - <a href="#">Tietosuojaseloste</a></p>
-        <ul id="socialmedia">
-            <li><a href="#" target="_blank" class="social"><img src="https://img.icons8.com/color/40/000000/twitter-circled--v1.png" alt="twitter"></a></li>
-            <li><a href="#" target="_blank" class="social"><img src="https://img.icons8.com/fluency/40/000000/instagram-new.png" alt="instagram"></a></li>
-            <li><a href="#" target="_blank" class="social"><img src="https://img.icons8.com/color/40/000000/facebook-new.png" alt="facebook"></a></li>
-        </ul>
-    </footer>
+	<?php
+    include('footer.html');
+    ?>
 	<script src="script.js"></script>
 </body>
 </html>

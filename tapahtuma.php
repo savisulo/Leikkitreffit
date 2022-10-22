@@ -99,17 +99,12 @@ if(isset($_GET['status']) && $_GET['status'] == 'eventSuccess') {
                 <input type="submit" name="submitbutton2" value="Lähetä">
             </form><br>
             <p>*Tähdellä merkityt kohdat ovat pakollisia.</p><br>
-            <p><a href="#" id="ylos">Takaisin ylös</a></p><br>
+            <p><a href="#" id="button3">Takaisin ylös</a></p><br>
 		</div>
 	</main>
-	<footer>
-        <p class="copyright">Copyright 2022, LeikkiTreffit - <a href="#">Tietosuojaseloste</a></p>
-        <ul id="socialmedia">
-            <li><a href="#" target="_blank" class="social"><img src="https://img.icons8.com/color/40/000000/twitter-circled--v1.png" alt="twitter"></a></li>
-            <li><a href="#" target="_blank" class="social"><img src="https://img.icons8.com/fluency/40/000000/instagram-new.png" alt="instagram"></a></li>
-            <li><a href="#" target="_blank" class="social"><img src="https://img.icons8.com/color/40/000000/facebook-new.png" alt="facebook"></a></li>
-        </ul>
-    </footer>
+	<?php
+    include('footer.html');
+    ?>
 	<script src="script.js"></script>
 </body>
 </html>

@@ -11,21 +11,11 @@
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
     </style>
-    <script>
-    let date = new Date();
-    function prevMonth() {
-    date.setMonth(date.getMonth() - 1);
-    renderCalendar();
-    }
-    function nextMonth() {
-    date.setMonth(date.getMonth() + 1);
-    renderCalendar();
-    }
-    </script>
 </head>
 <body id="indexBody">
 <?php
 include('palautelomake.php');
+include('tapahtumatKalenterissa.php');
 if(isset($_GET['status']) && $_GET['status'] == 'success') {
     echo '<p id="successmsg">Kiitos palautteestasi!</p>';
     }
@@ -37,7 +27,7 @@ if(isset($_GET['status']) && $_GET['status'] == 'success') {
                 <a href="index.php#about" id="firstItem">Mikä on LeikkiTreffit?</a>
                 <a href="index.php#kalenteri">Tapahtumakalenteri</a>
                 <a href="login.php">Kirjaudu sisään</a>
-                <a href="rekisterointi.html">Liity yhteisöön</a>
+                <a href="rekisterointi.php">Liity yhteisöön</a>
                 <a href="index.php#palautelomake" id="lastItem">Palautelomake</a>
             </div>
             <a href="login.php" class="loginIcon"> <!-- Linkki sisäänkirjautumiseen -->
@@ -51,8 +41,18 @@ if(isset($_GET['status']) && $_GET['status'] == 'success') {
     <main>
         <div id="div1">
             <h2 id="about">Mikä on LeikkiTreffit?</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh justo, dapibus non dignissim in, eleifend et sem.</p><br>
-            <a href="#">Lue lisää</a>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh justo, dapibus non dignissim in, eleifend et sem.</p>
+            <button id="button1" onclick="readMore()">Lue lisää >></button>
+            <p id="lueLisaa">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur id erat sodales, malesuada augue vitae, pulvinar orci.
+                Nam at nisl sodales, volutpat quam ac, elementum est. Nullam mollis porttitor fringilla.
+                Nam ipsum ipsum, semper a condimentum et, cursus vel mi. Vivamus sed est sit amet velit cursus accumsan eget at arcu.
+                Vivamus ornare mi id nibh iaculis feugiat. Sed interdum quis sem quis finibus.
+                Vivamus dui nulla, pretium eget faucibus sed, mattis vel mauris. Sed blandit tortor ut nunc malesuada, quis consequat elit iaculis.
+                Duis gravida, velit ut malesuada mattis, nisl sapien hendrerit mi, non porta arcu nulla a diam.
+                Fusce lectus mauris, egestas sed ultricies ac, ornare vitae sem. Aenean ac tortor dictum, laoreet sem porttitor, semper nisl.
+                Proin gravida mattis laoreet. Maecenas vel posuere est. Nullam ligula felis, convallis fringilla dignissim id, ultricies nec ipsum.
+                Praesent nec elementum elit.</p>
+            <button id="button2" onclick="readLess()">Lue vähemmän</button>
         </div>
         <div id="div2">
             <h2 id="kalenteri">Tapahtumakalenteri</h2>
@@ -82,11 +82,11 @@ if(isset($_GET['status']) && $_GET['status'] == 'success') {
             <form action="index.php" method="post">
                 <div>
                 <label for="fname">* Etunimi:</label>
-                <input type="text" id="fname" name="etunimi" placeholder="Matti" size="37" minlength="2" maxlength="30" required>
+                <input type="text" id="fname" name="etunimi" placeholder="Matti" minlength="2" maxlength="30" required>
                 </div>
                 <div>
                 <label for="lname">* Sukunimi:</label>
-                <input type="text" id="lname" name="sukunimi" placeholder="Meikäläinen" size="37" minlength="2" maxlength="40" required>
+                <input type="text" id="lname" name="sukunimi" placeholder="Meikäläinen" minlength="2" maxlength="40" required>
                 </div>
                 <div>
                 <label for="email">* Sähköposti:</label>
@@ -94,22 +94,17 @@ if(isset($_GET['status']) && $_GET['status'] == 'success') {
                 </div>
                 <div>
                 <label for="viesti">* Palaute:</label>
-                <textarea name="viesti" id="viesti" rows="10" cols="40" placeholder="Kirjoita viestisi tähän." maxlength="1000"></textarea>
+                <textarea name="viesti" id="viesti" placeholder="Kirjoita palautteesi tähän." maxlength="1000"></textarea>
                 </div>        
                 <input type="submit" name="submitbutton" value="Lähetä">
             </form><br>
             <p>*Tähdellä merkityt kohdat ovat pakollisia.</p><br>
-            <p><a href="#" id="ylos">Takaisin ylös</a></p><br>
+            <p><a href="#" id="button3">Takaisin ylös</a></p><br>
         </div>
     </main>
-    <footer>
-        <p class="copyright">Copyright 2022, LeikkiTreffit - <a href="#">Tietosuojaseloste</a></p>
-        <ul id="socialmedia">
-            <li><a href="#" target="_blank" class="social"><img src="https://img.icons8.com/color/40/000000/twitter-circled--v1.png" alt="twitter"></a></li>
-            <li><a href="#" target="_blank" class="social"><img src="https://img.icons8.com/fluency/40/000000/instagram-new.png" alt="instagram"></a></li>
-            <li><a href="#" target="_blank" class="social"><img src="https://img.icons8.com/color/40/000000/facebook-new.png" alt="facebook"></a></li>
-        </ul>
-    </footer>
+    <?php
+    include('footer.html');
+    ?>
     <script src="script.js"></script>
 </body>
 </html>

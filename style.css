@@ -1,10 +1,11 @@
 * {
     box-sizing: border-box;
-    font-family: 'Quicksand';
+    font-family: Roboto Mono;
     font-size: 16px;
     padding: 0;
     margin: 0;
     color: rgb(71, 71, 71);
+    line-height: 1.6;
 }
 
 :root {
@@ -29,21 +30,19 @@ body {
 }
 
 h1 {
+    font-family: 'Quicksand';
     font-size: 1.2rem;
 }
 
 h2 {
+    font-family: 'Quicksand';
     padding-bottom: 10px;
     font-size: 1.1rem;
 }
 
 h3 {
+    font-family: 'Quicksand';
     font-size: 1rem;
-}
-
-p {
-    font-family: Roboto Mono;
-    line-height: 1.6;
 }
 
 /* Style the navigation menu */
@@ -56,7 +55,21 @@ p {
 }
   
 /* Hide the links inside the navigation menu (except for logo/home) */
-.topnav #myLinks {
+.topnav #myLinks, #lueLisaa {
+    display: none;
+}
+
+#button1, #button2, #button3 {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    background-color: #ffebee;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+#button2 {
     display: none;
 }
 
@@ -126,11 +139,32 @@ p {
     color: rgb(71, 71, 71);
 }
 
-#div1, #div2 {
+#div1, #div2, #profileDiv {
     height: var(--height);
     background-color: var(--background-color);
     padding: var(--padding);
     margin-bottom: var(--margin-bottom);
+}
+
+#profileDiv > div {
+    display: flex;
+    gap: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.profileInfo {
+    min-width: 210px;
+}
+
+ul {
+    padding-left: 16px;
+}
+
+ul > li {
+    margin-bottom: 10px;
 }
 
 /* Styling the calendar*/
@@ -196,7 +230,7 @@ p {
     padding: 0.2rem;
 }
 
-.days div {
+.days div:not(.prev-date, .next-date) {
     margin: 0.2rem;
     width: calc(26.8rem/7);
     height: 3.4rem;
@@ -207,14 +241,24 @@ p {
     transition: background-color 0.2s;
 }
 
-.days div:hover:not(.today) {
+.days div a {
+    text-decoration: none;
+}
+
+.days div:hover:not(.prev-date, .next-date) {
     background-color: #d7ccc8;
     border: 0.1rem solid #a69b97;
     cursor: pointer;
 }
 
 .prev-date, .next-date {
-    opacity: 0.5;
+    color: rgba(71, 71, 71, 0.5);
+    margin: 0.2rem;
+    width: calc(26.8rem/7);
+    height: 3.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .today {
@@ -269,6 +313,10 @@ footer {
     font-size: 12px;
 }
 
+#copyrightLink {
+    font-size: 12px;
+}
+
 /* rekisterointi.html tyylit */
 .register {
     width: 400px;
@@ -297,7 +345,6 @@ footer {
 .register form input[type="email"],
 #div3 form input[type="text"],
 #div3 form input[type="email"],
-#div3 form textarea,
 #tapahtumalomake form input[type="text"],
 #tapahtumalomake form input[type="date"],
 #tapahtumalomake form input[type="time"],
@@ -308,9 +355,30 @@ footer {
     margin-bottom: 30px;
     padding: 0 10px;
 }
-.register form input[type="submit"],
+
+#div3 form textarea {
+    width: 310px;
+    height: 50px;
+    border: 1px solid #dee0e4;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
 #div3 form input[type="submit"],
 #tapahtumalomake form input[type="submit"] {
+    width: 310px;
+    height: 50px;
+    background-color: #d7ccc8;
+    box-shadow: 2px 4px 9px 0 rgba(0, 0, 0, 0.3);
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    color: rgb(71, 71, 71);
+    transition: background-color 0.2s;
+}
+
+.login form input[type="submit"],
+.register form input[type="submit"] {
     width: 100%;
     padding: 20px;
     margin-top: 20px;
@@ -321,6 +389,8 @@ footer {
     color: rgb(71, 71, 71);
     transition: background-color 0.2s;
 }
+
+.login form input[type="submit"]:hover,
 .register form input[type="submit"]:hover,
 #div3 form input[type="submit"]:hover,
 #tapahtumalomake form input[type="submit"]:hover {
@@ -366,22 +436,6 @@ footer {
     border: 1px solid #dee0e4;
     margin-bottom: 20px;
     padding: 0 15px;
-}
-.login form input[type="submit"] {
-    width: 100%;
-    padding: 20px;
-    margin-top: 20px;
-    background-color: #d7ccc8;
-    border: 0;
-    cursor: pointer;
-    font-weight: bold;
-    color: rgb(71, 71, 71);
-    transition: background-color 0.2s;
-}
-.login form input[type="submit"]:hover {
-    background-color: #a69b97;
-    transition: background-color 0.2s;
-    color: white;
 }
 
 .linkki {
@@ -475,4 +529,8 @@ body.loggedin {
 .content > div p {
 	padding: 5px;
 	margin: 0 0 10px 0;
+}
+
+a {
+    text-decoration: none;
 }
