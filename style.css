@@ -1,9 +1,11 @@
 * {
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+    font-family: Roboto Mono;
     font-size: 16px;
     padding: 0;
     margin: 0;
+    color: rgb(71, 71, 71);
+    line-height: 1.6;
 }
 
 :root {
@@ -14,6 +16,10 @@
 }
 
 body {
+    margin-top: 100px;
+}
+
+#indexBody {
     margin-top: 300px;
     background-image: url(images/background1_1.jpg);
     height: 100px;
@@ -23,13 +29,20 @@ body {
     position: relative;
 }
 
-h2 {
-    padding-bottom: 10px;
+h1 {
+    font-family: 'Quicksand';
+    font-size: 1.2rem;
 }
 
-p {
-    font-family: Roboto Mono;
-    line-height: 1.6;
+h2 {
+    font-family: 'Quicksand';
+    padding-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+h3 {
+    font-family: 'Quicksand';
+    font-size: 1rem;
 }
 
 /* Style the navigation menu */
@@ -42,33 +55,77 @@ p {
 }
   
 /* Hide the links inside the navigation menu (except for logo/home) */
-.topnav #myLinks {
+.topnav #myLinks, #lueLisaa {
     display: none;
 }
-  
-/* Style navigation menu links */
-.topnav a {
-    color: #000000;
+
+#button1, #button2, #button3 {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    background-color: #ffebee;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+#button2 {
+    display: none;
+}
+
+/* Style the active link (or home/logo) */
+.active {
+    background-color: #ffebee;
+    color: rgb(71, 71, 71);
     padding: 24px 26px;
     text-decoration: none;
     font-size: 17px;
     display: block;
 }
   
+/* Style navigation menu links */
+#myLinks a {
+    color: rgb(71, 71, 71);
+    padding: 24px 26px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+}
+
 /* Style the hamburger menu */
-.topnav a.icon {
+.hamburgerIcon {
     display: block;
     position: absolute;
     right: 0;
     top: 0;
+    color: rgb(71, 71, 71);
+    font-size: 1.2rem;
+    padding: 24px 26px;
+    text-decoration: none;
 }
 
-/* Style the login menu */
-.topnav a.firstIcon {
+/* Style the login and profile menu */
+.loginIcon, .profileIcon {
     display: block;
     position: absolute;
     right: 65px;
     top: 0;
+    color: rgb(71, 71, 71);
+    font-size: 1.2rem;
+    padding: 24px 26px;
+    text-decoration: none;
+}
+
+/* Style the logout menu */
+.logoutIcon {
+    display: block;
+    position: absolute;
+    right: 130px;
+    top: 0;
+    color: rgb(71, 71, 71);
+    font-size: 1.2rem;
+    padding: 24px 26px;
+    text-decoration: none;
 }
   
 /* Add a grey background color on mouse-over */
@@ -77,29 +134,149 @@ p {
     color: #fffffb;
 }
 
-.active:hover, .firstIcon:hover, .icon:hover {
+.active:hover, .loginIcon:hover, .logoutIcon:hover, .profileIcon:hover, .hamburgerIcon:hover {
     background-color: #ccb9bc;
-    color: #000000;
-}
-  
-/* Style the active link (or home/logo) */
-.active {
-    background-color: #ffebee;
-    color: #000000;
+    color: rgb(71, 71, 71);
 }
 
-#div1, #div2 {
+#div1, #div2, #profileDiv {
     height: var(--height);
     background-color: var(--background-color);
     padding: var(--padding);
     margin-bottom: var(--margin-bottom);
 }
 
-#div3 {
+#profileDiv > div {
+    display: flex;
+    gap: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.profileInfo {
+    min-width: 210px;
+}
+
+ul {
+    padding-left: 16px;
+}
+
+ul > li {
+    margin-bottom: 10px;
+}
+
+/* Styling the calendar*/
+.calendar {
+    width: 30rem;
+    height: fit-content;
+    background-color: #fffffb;
+    box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.4);
+}
+
+.month {
+    width: 100%;
+    height: fit-content;
+    background-color: #a69b97;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    text-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.4);
+}
+
+.month i {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.month h3 {
+    font-weight: 400;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin-bottom: 0.6rem;
+}
+
+.month p {
+    font-size: 0.8rem;
+    color: white;
+}
+
+.weekdays {
+    width: 100%;
+    height: 3rem;
+    padding: 0 0.4rem;
+    display: flex;
+    align-items: center;
+}
+
+.weekdays div {
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+    width: calc(29.2rem/7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+
+.days {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.2rem;
+}
+
+.days div:not(.prev-date, .next-date) {
+    margin: 0.2rem;
+    width: calc(26.8rem/7);
+    height: 3.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
+    transition: background-color 0.2s;
+}
+
+.days div a {
+    text-decoration: none;
+}
+
+.days div:hover:not(.prev-date, .next-date) {
+    background-color: #d7ccc8;
+    border: 0.1rem solid #a69b97;
+    cursor: pointer;
+}
+
+.prev-date, .next-date {
+    color: rgba(71, 71, 71, 0.5);
+    margin: 0.2rem;
+    width: calc(26.8rem/7);
+    height: 3.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.today {
+    background-color: #d7ccc8;
+}
+/* Styling calendar ends*/
+
+#div3, #tapahtumalomake {
     height: var(--height);
     background-color: white;
     padding: var(--padding);
     margin-bottom: var(--margin-bottom);
+}
+
+#div3 > form > div, #tapahtumalomake > form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 footer {
@@ -132,7 +309,228 @@ footer {
 } */
 
 .copyright {
-    color: black;
     margin-left: 20px;
     font-size: 12px;
+}
+
+#copyrightLink {
+    font-size: 12px;
+}
+
+/* rekisterointi.html tyylit */
+.register {
+    width: 400px;
+    background-color: #ffffff;
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+    margin: auto;
+}
+.register h2 {
+    text-align: center;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #dee0e4;
+}
+.register form {
+    padding-top: 20px;
+}
+
+.register form div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 44px;
+}
+
+.register form input[type="password"],
+.register form input[type="text"],
+.register form input[type="email"],
+#div3 form input[type="text"],
+#div3 form input[type="email"],
+#tapahtumalomake form input[type="text"],
+#tapahtumalomake form input[type="date"],
+#tapahtumalomake form input[type="time"],
+#tapahtumalomake form textarea {
+    width: 310px;
+    height: 50px;
+    border: 1px solid #dee0e4;
+    margin-bottom: 30px;
+    padding: 0 10px;
+}
+
+#div3 form textarea {
+    width: 310px;
+    height: 50px;
+    border: 1px solid #dee0e4;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+#div3 form input[type="submit"],
+#tapahtumalomake form input[type="submit"] {
+    width: 310px;
+    height: 50px;
+    background-color: #d7ccc8;
+    box-shadow: 2px 4px 9px 0 rgba(0, 0, 0, 0.3);
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    color: rgb(71, 71, 71);
+    transition: background-color 0.2s;
+}
+
+.login form input[type="submit"],
+.register form input[type="submit"] {
+    width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: #d7ccc8;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
+    color: rgb(71, 71, 71);
+    transition: background-color 0.2s;
+}
+
+.login form input[type="submit"]:hover,
+.register form input[type="submit"]:hover,
+#div3 form input[type="submit"]:hover,
+#tapahtumalomake form input[type="submit"]:hover {
+    background-color: #a69b97;
+    transition: background-color 0.2s;
+    color: white;
+}
+
+#readOnly label, #readOnly input[type="text"] {
+    color: rgb(183, 183, 183);
+}
+
+/* login.php tyylit */
+.login {
+    width: 400px;
+    background-color: #ffffff;
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+    margin: auto;
+}
+.login h2 {
+    text-align: center;
+    padding: 20px 0 20px 0;
+    border-bottom: 1px solid #dee0e4;
+}
+.login form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 20px;
+}
+.login form label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #d7ccc8;
+    color: #ffffff;
+}
+.login form input[type="password"], .login form input[type="text"] {
+    width: 310px;
+    height: 50px;
+    border: 1px solid #dee0e4;
+    margin-bottom: 20px;
+    padding: 0 15px;
+}
+
+.linkki {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+#linkki {
+    text-decoration: none;
+}
+
+#successmsg {
+    border: none;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    margin: auto;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.4);
+}
+
+/* home.php tyylit */
+.navtop {
+	background-color: rgb(189, 143, 143);
+	height: 60px;
+	width: 100%;
+	border: 0;
+}
+.navtop div {
+	display: flex;
+	margin: 0 auto;
+	width: 1000px;
+	height: 100%;
+}
+.navtop div h1, .navtop div a {
+	display: inline-flex;
+	align-items: center;
+}
+.navtop div h1 {
+	flex: 1;
+	font-size: 24px;
+	padding: 0;
+	margin: 0;
+	color: white;
+	font-weight: normal;
+}
+.navtop div a {
+	padding: 0 20px;
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+}
+.navtop div a i {
+	padding: 2px 8px 0 0;
+}
+.navtop div a:hover {
+	color: black;
+}
+body.loggedin {
+	background-color: #f3f4f7;
+}
+.content {
+	width: 1000px;
+	margin: 0 auto;
+}
+.content h2 {
+	margin: 0;
+	padding: 25px 0;
+	font-size: 22px;
+	border-bottom: 1px solid #e0e0e3;
+	color: #4a536e;
+}
+.content > p, .content > div {
+	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+	margin: 25px 0;
+	padding: 25px;
+	background-color: #fff;
+}
+.content > p table td, .content > div table td {
+	padding: 5px;
+}
+.content > p table td:first-child, .content > div table td:first-child {
+	font-weight: bold;
+	color: #4a536e;
+	padding-right: 15px;
+}
+.content > div p {
+	padding: 5px;
+	margin: 0 0 10px 0;
+}
+
+a {
+    text-decoration: none;
 }
