@@ -8,10 +8,3 @@ if (mysqli_connect_errno()) {
 	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
 
-$eventSearch = "SELECT * FROM tapahtumat WHERE pvm = '2022-10-28'";
-$result = $con->query($eventSearch);
-if ($results->num_rows > 0) {
-    while($rivi = $results->fetch_assoc()) {
-        $numOfEvents = $rivi["paikka"];
-    }
-}
