@@ -14,6 +14,7 @@
 </head>
 <body id="indexBody">
 <?php
+include('secure.php');
 include('palautelomake.php');
 if(isset($_GET['status']) && $_GET['status'] == 'success') {
     echo '<p id="successmsg">Kiitos palautteestasi!</p>';
@@ -25,14 +26,13 @@ if(isset($_GET['status']) && $_GET['status'] == 'success') {
             <div id="myLinks"> <!-- Navigation links (hidden by default) -->
                 <a href="index.php#about" id="firstItem">Mikä on LeikkiTreffit?</a>
                 <a href="index.php#kalenteri">Tapahtumakalenteri</a>
-                <a href="login.php">Kirjaudu sisään</a>
-                <a href="rekisterointi.php">Liity yhteisöön</a>
+                <a href="profile.php">Käyttäjätili</a>
+                <a href="logout.php">Kirjaudu ulos</a>
                 <a href="index.php#palautelomake" id="lastItem">Palautelomake</a>
             </div>
-            <a href="login.php" class="loginIcon"> <!-- Linkki sisäänkirjautumiseen -->
-                <i class="fas fa-sign-in-alt"></i>
-            </a>
-            <a href="javascript:void(0);" class="hamburgerIcon" onclick="myFunction()" onmouseover="myFunction()"> <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+            <a href="logout.php" class="logoutIcon"><i class="fas fa-sign-out-alt"></i></a>
+			<a href="profile.php" class="profileIcon"><i class="fas fa-user-circle"></i></a>
+            <a href="javascript:void(0);" class="hamburgerIcon" onclick="myFunction()" onmouseover="myFunction()">
                 <i class="fa fa-bars"></i>
             </a>
         </div>

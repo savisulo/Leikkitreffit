@@ -96,7 +96,7 @@ if ($tulokset->num_rows > 0) {
                 <?php
                 foreach ($tapahtumat as $tapahtuma) {
                 ?>
-                <li><?php echo $tapahtuma['nimi']. " - " . $tapahtuma['paikka']. "<br>" . $tapahtuma['pvm']. " - " . $tapahtuma['klo']. "<br>" . $tapahtuma['kuvaus']. "<br>";?></li>
+                <li><?php echo $tapahtuma['nimi']. "<br>" . $tapahtuma['paikka']. "<br>" . $tapahtuma['pvm']. " - " . $tapahtuma['klo']. "<br>" . $tapahtuma['kuvaus']. "<br>";?></li>
                 <?php
                 }
                 ?>

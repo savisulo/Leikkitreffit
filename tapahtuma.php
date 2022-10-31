@@ -82,7 +82,7 @@ if(isset($_GET['status']) && $_GET['status'] == 'eventSuccess') {
                 </div>
                 <div>
                 <label for="paikka">* Tapahtuman sijainti:</label>
-                <input type="text" id="paikka" name="paikka" placeholder="Leikkipuiston nimi / osoite" size="37" minlength="2" maxlength="40" required>
+                <input type="text" id="paikka" name="paikka" placeholder="esim. leikkipuiston nimi / osoite" size="37" minlength="2" maxlength="40" required>
                 </div>
                 <div>
                 <label for="pvm">* Tapahtuman pvm:</label>
@@ -96,7 +96,7 @@ if(isset($_GET['status']) && $_GET['status'] == 'eventSuccess') {
                 <label for="kuvaus">Tapahtuman kuvaus:</label>
                 <textarea name="kuvaus" id="kuvaus" rows="10" cols="40" placeholder="Lisää halutessasi tapahtuman kuvaus" maxlength="300"></textarea>
                 </div>        
-                <input type="submit" name="submitbutton2" value="Lähetä">
+                <input type="submit" name="submitbutton2" value="Tallenna">
             </form><br>
             <p>*Tähdellä merkityt kohdat ovat pakollisia.</p><br>
             <p><a href="#" id="button3">Takaisin ylös</a></p><br>

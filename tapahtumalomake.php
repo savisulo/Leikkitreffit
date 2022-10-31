@@ -16,8 +16,6 @@ $con->set_charset("utf8");
 
 if(isset($_POST['submitbutton2']) && $_POST['nimi'] != null && $_POST['paikka'] != null && $_POST['pvm'] != null && $_POST['klo'] != null) {
     tapahtumaLomake();
-} else {
-    echo '<p>Ole hyvä ja täytä pakolliset tiedot.</p>';
 }
     
 function tapahtumaLomake() {
