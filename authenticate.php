@@ -1,4 +1,10 @@
 <?php
+include('vendor/autoload.php');
+require_once __DIR__ . '/vendor/autoload.php';
+
+$dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 // session_start();
 // Change this to your connection info.
 $DATABASE_HOST = getenv('DATABASE_HOST');
